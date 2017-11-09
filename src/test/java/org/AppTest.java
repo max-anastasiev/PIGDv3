@@ -1,13 +1,10 @@
 package org;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.interactions.Actions;
 import pageobjects.Login;
 import pageobjects.LoginSucces;
@@ -53,7 +50,8 @@ public class AppTest
 
         @After
                 public void after(){
-                final WebDriver driver = new WebDriver() {
+
+                WebDriver driver = new WebDriver() {
                         public void get(String s) {
 
                         }
@@ -78,6 +76,14 @@ public class AppTest
                                 return null;
                         }
 
+                        public void close() {
+
+                        }
+
+                        public void quit() {
+
+                        }
+
                         public Set<String> getWindowHandles() {
                                 return null;
                         }
@@ -97,15 +103,8 @@ public class AppTest
                         public Options manage() {
                                 return null;
                         }
-
-                        public void close() {
-
-                        }
-
-                        public void quit() {
-
-                        }
                 };
+
 }
 
 
