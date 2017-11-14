@@ -1,5 +1,6 @@
 package org;
 
+import org.jsoup.Jsoup;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,14 +11,15 @@ import pageobjects.Login;
 import pageobjects.LoginSucces;
 import pageobjects.TestCerinta4;
 
+import javax.swing.text.Document;
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
 import static org.hamcrest.core.Is.is;
 
-public class AppTest 
+public class AppTest
 {
-        public String loginlink = "http:///185.108.182.151:10200//Pigd_414//logon.aspx";
 
         @Before
                 public void before(){
@@ -25,7 +27,7 @@ public class AppTest
         }
 
         @Test
-        public void login(){
+        public void login() throws IOException {
                 WebDriver driver = new FirefoxDriver();
                 Login login = new Login(driver);
 
@@ -44,9 +46,21 @@ public class AppTest
 
                 TestCerinta4 cerinta4 = new TestCerinta4(driver);
                 Actions actions =  new Actions(driver);
-                actions.moveToElement(cerinta4.getCereri()).moveToElement(cerinta4.getToatecereri()).click().build().perform();
+                actions.moveToElement(TestCerinta4.getCereri()).moveToElement(TestCerinta4.getToatecereri()).click().build().perform();
+
+
+                driver.findElements(By.xpath ("/html/body/form/table/tbody/tr[3]/td/div/div[2]/div[2]/div/table/thead/tr/th[5]"));
+                System.out.println(driver);
+
+
+                Actions actions1 = new Actions(driver);
+                actions1.click(TestCerinta4.getStatus());
+
+
+
 
         }
+
 
         @After
                 public void after(){
